@@ -1,4 +1,4 @@
-module core
+module github.com/dominhchi/ggl-core-micro
 
 go 1.16
 
