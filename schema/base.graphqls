@@ -1,9 +1,12 @@
 type Query
 scalar UUID
+scalar Int64
+scalar UInt8
 
 scalar Cursor
 scalar Time
 directive @goField(forceResolver: Boolean, name: String) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION
+directive @binding(constraint: String!) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 
 
 
