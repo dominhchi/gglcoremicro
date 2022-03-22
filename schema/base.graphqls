@@ -21,7 +21,7 @@ enum OrderDirection {
     DESC
 }
 
-type Limit {
+input Limit {
     first: Int
     last: Int
 }
