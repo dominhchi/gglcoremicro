@@ -1,0 +1,15 @@
+extend type Building @key(fields: "id") {
+    id: UUID! @external
+}
+
+extend type Block @key(fields: "id") {
+    id: UUID! @external
+}
+
+extend type Floor @key(fields: "id") {
+    id: UUID! @external
+}
+
+extend type Apartment @key(fields: "id") {
+    id: UUID! @external
+}

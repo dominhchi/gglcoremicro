@@ -1,4 +1,3 @@
-type Query
 scalar UUID
 scalar Int64
 scalar UInt8
@@ -20,4 +19,9 @@ type PageInfo {
 enum OrderDirection {
     ASC
     DESC
+}
+
+type Limit {
+    first: Int
+    last: Int
 }
