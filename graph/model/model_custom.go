@@ -7,6 +7,10 @@ func (p Limit) GetFirst() *int {
 			return &first
 		}
 	}
+	if p.First == nil && p.Last == nil {
+		first := 10
+		return &first
+	}
 	return p.First
 }
 
