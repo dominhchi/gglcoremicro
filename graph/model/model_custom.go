@@ -21,5 +21,5 @@ func (p Limit) GetLast() *int {
 			return &last
 		}
 	}
-	return p.First
+	return p.Last
 }
