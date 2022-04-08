@@ -1,6 +1,6 @@
 module github.com/dominhchi/gglcoremicro
 
-go 1.16
+go 1.18
 
 require (
 	github.com/99designs/gqlgen v0.16.0
