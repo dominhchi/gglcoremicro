@@ -12,4 +12,5 @@ require (
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/labstack/echo/v4 v4.7.1
 	github.com/vektah/gqlparser/v2 v2.2.0
+	golang.org/x/exp v0.0.0-20220407100705-7b9b53b0aca4 // indirect
 )
