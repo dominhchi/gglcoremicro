@@ -8,6 +8,7 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	en_translations "github.com/go-playground/validator/v10/translations/en"
+	"strings"
 )
 
 var (
@@ -36,7 +37,9 @@ func Binding(ctx context.Context, obj interface{}, next graphql.Resolver, constr
 	if err != nil {
 		panic(err)
 	}
-	//fieldName := *graphql.GetPathContext(ctx).Field
+	if val == nil && !(strings.Contains(constraint, "required")) {
+		return val, nil
+	}
 
 	err = validate.Var(val, constraint)
 	if err != nil {
