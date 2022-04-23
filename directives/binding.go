@@ -8,6 +8,7 @@ import (
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	en_translations "github.com/go-playground/validator/v10/translations/en"
+	"reflect"
 	"strings"
 )
 
@@ -37,7 +38,7 @@ func Binding(ctx context.Context, obj interface{}, next graphql.Resolver, constr
 	if err != nil {
 		panic(err)
 	}
-	if val == nil && !(strings.Contains(constraint, "required")) {
+	if reflect.ValueOf(val).IsNil() && !(strings.Contains(constraint, "required")) {
 		return val, nil
 	}
 
