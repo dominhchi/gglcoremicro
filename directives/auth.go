@@ -22,8 +22,7 @@ func Auth(ctx context.Context, obj interface{}, next graphql.Resolver) (interfac
 
 func IsAdmin(ctx context.Context, obj interface{}, next graphql.Resolver) (interface{}, error) {
 	user := middlewares.CtxUser(ctx)
-	if user.IsAdmin {
-
+	if user.IsAdmin || user.IsSuperUser {
 		return next(ctx)
 	}
 	return nil, &gqlerror.Error{
@@ -44,8 +43,7 @@ func IsSuper(ctx context.Context, obj interface{}, next graphql.Resolver) (inter
 
 func IsStaff(ctx context.Context, obj interface{}, next graphql.Resolver) (interface{}, error) {
 	user := middlewares.CtxUser(ctx)
-	if user.IsStaff {
-
+	if user.IsStaff || user.IsSuperUser {
 		return next(ctx)
 	}
 	return nil, &gqlerror.Error{
@@ -55,7 +53,7 @@ func IsStaff(ctx context.Context, obj interface{}, next graphql.Resolver) (inter
 
 func HasRole(ctx context.Context, obj interface{}, next graphql.Resolver, role string) (interface{}, error) {
 	user := middlewares.CtxUser(ctx)
-	if user.IsAdmin {
+	if user.IsAdmin || user.IsSuperUser {
 		return next(ctx)
 	}
 	check := slices.Contains(user.Permissions, role)
@@ -83,7 +81,7 @@ func HasStaffRole(ctx context.Context, obj interface{}, next graphql.Resolver, r
 
 func HasPermission(ctx context.Context, obj interface{}, next graphql.Resolver, permissions []string) (interface{}, error) {
 	user := middlewares.CtxUser(ctx)
-	if user.IsAdmin {
+	if user.IsAdmin || user.IsSuperUser {
 		return next(ctx)
 	}
 	check := utils.Intersect(user.Permissions, permissions)
